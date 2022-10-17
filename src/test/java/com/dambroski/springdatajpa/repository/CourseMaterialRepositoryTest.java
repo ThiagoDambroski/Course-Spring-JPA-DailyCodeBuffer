@@ -1,5 +1,7 @@
 package com.dambroski.springdatajpa.repository;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,5 +29,13 @@ class CourseMaterialRepositoryTest {
 				.build();
 		repository.save(courseMaterial);
 	}
+	
+	@Test
+	public void printAllCourseMaterial() {
+		List<CourseMaterial> listCourserMaterial = repository.findAll();
+		System.out.println(listCourserMaterial);
+	}
+	
+
 	
 }
