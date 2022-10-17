@@ -1,5 +1,6 @@
 package com.dambroski.springdatajpa.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,7 @@ public class CourseMaterial {
 	
 	private String url;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "course_id",referencedColumnName = "courseId")
 	private Course course;
 }
