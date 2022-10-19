@@ -9,9 +9,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import com.dambroski.springdatajpa.entity.Course;
+import com.dambroski.springdatajpa.entity.Student;
 import com.dambroski.springdatajpa.entity.Teacher;
-
-import net.bytebuddy.asm.Advice.OffsetMapping.Sort;
 
 @SpringBootTest
 class CourseRepositoryTest {
@@ -86,6 +85,21 @@ class CourseRepositoryTest {
 		
 		List<Course> courses = repository.findByTitleContaining("M", firstPageTenRecords).getContent();
 		System.out.println(courses);
+	}
+	
+	@Test
+	public void saveCourseWithStudent() {
+		Student student = Student.builder()
+				.emailId("thiagoleticia@gmail.com")
+				.firstName("thiago")
+				.lastName("leticia")
+				.build();
+		Course course = Course.builder()
+				.title("Phyton")
+				.credit(5)
+				.build();
+		course.addStudents(student);
+		repository.save(course);
 	}
 
 }
